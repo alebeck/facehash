@@ -10,12 +10,16 @@ This makes faces the ideal representation for cryptographic hashes, for the sake
 
 ## Usage
 
-You need a Linux machine with Python 3.7 (can be a conda/venv environment) as well as a NVIDIA GPU capable of CUDA 11. Install via:
+You need a Linux machine with Python 3.7.* (can be a conda/venv environment) as well as an NVIDIA GPU capable of CUDA 11. Install via:
 
 ```bash
 pip install git+https://github.com/alebeck/facehash -f https://download.pytorch.org/whl/torch_stable.html
 alias facehash="$install_dir/bin/python ..."
 ```
+
+
+
+The first run can take a bit longer as the StyleGAN2 model has to be downloaded and relevant PyTorch extensions are built.
 
 ## How does it work?
 

@@ -10,17 +10,24 @@ This makes faces the ideal representation for cryptographic hashes, for the sake
 
 ## Usage
 
-You need a Linux machine with Python 3.7.* (can be a conda/venv environment) as well as an NVIDIA GPU capable of CUDA 11. Install via:
+You need a Linux machine with Python 3.7.* (we recommend a conda/venv environment) as well as an NVIDIA GPU capable of CUDA 11. Install via:
 
 ```bash
 pip install git+https://github.com/alebeck/facehash -f https://download.pytorch.org/whl/torch_stable.html
-alias facehash="$install_dir/bin/python ..."
 ```
 
+`facehash` should have been added to your `PATH`, just call it like
 
+```bash
+facehash file
+# or
+echo -n "hello world!" | facehash
+# you can also specify an output file (instead of displaying)
+echo -n "hello world!" | facehash -o out.png
+```
 
 The first run can take a bit longer as the StyleGAN2 model has to be downloaded and relevant PyTorch extensions are built.
 
 ## How does it work?
 
-We extend the input data's SHA512 hash to 512 bytes by appending eight nonce values to the input and concatenating the outputs. Each byte is expected to be uniformly distributed within its value range, due to the chaotic nature of the hash. We use a Box-Muller transform to deterministically map the uniformly distributed bytes to a 512-dimensional Gaussian latent vector, which is expected by the Generator function of NVIDIA's [StyleGAN2-ADA model](https://github.com/NVlabs/stylegan2-ada-pytorch).
+We calculate an extended (512 byte) SHA hash by appending eight nonce values to the input and concatenating the respective SHA-512 hashes. Each byte is expected to be uniformly distributed within its value range, due to the chaotic nature of the hash. We use a Box-Muller transform to deterministically map the uniformly distributed bytes to a 512-dimensional Gaussian latent vector, which is expected by the Generator function of NVIDIA's [StyleGAN2-ADA model](https://github.com/NVlabs/stylegan2-ada-pytorch).

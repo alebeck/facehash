@@ -10,10 +10,10 @@ This makes faces the ideal representation for cryptographic hashes, for the sake
 
 ## Usage
 
-You need a Linux machine with Python 3.7.* (we recommend a conda/venv environment) as well as an NVIDIA GPU capable of CUDA 11. Install via:
+You need a Linux environment with Python >=3.7 and PyTorch >=1.7.1 with cudatoolkit 11.* installed. Then install via:
 
 ```bash
-pip install git+https://github.com/alebeck/facehash -f https://download.pytorch.org/whl/torch_stable.html
+pip install git+https://github.com/alebeck/facehash
 ```
 
 `facehash` should have been added to your `PATH`, just call it like

@@ -1,10 +1,7 @@
 import sys
-import pathlib
 import hashlib
-import contextlib
 import pickle
 import math
-import io
 
 import click
 import torch
@@ -37,9 +34,7 @@ def latent_from_bytes(hash_bytes: bytes) -> torch.Tensor:
 
 
 def generate_image(G: torch.nn.Module, z: torch.Tensor) -> Image:
-    # we want to suppress any PyTorch module setup message from the StyleGan2 code
-    with contextlib.redirect_stdout(io.StringIO()):
-        img = G(z.unsqueeze(0).cuda(), None)
+    img = G(z.unsqueeze(0).cuda(), None)
     img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
     img = Image.fromarray(img[0].cpu().numpy(), 'RGB')
     return img

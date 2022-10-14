@@ -1,3 +1,4 @@
+import os
 import sys
 import hashlib
 import pickle
@@ -63,6 +64,11 @@ def main(filename, model, save_filename, resize):
     with dnnlib.util.open_url(MODELS_BASE_URL + f'{model}.pkl') as f:
         G = pickle.load(f)['G_ema'].cuda()
 
+    # deterministically map latent code to image
+    torch.backends.cudnn.benchmark = False
+    torch.use_deterministic_algorithms(True)
+    # https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility
+    os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
     img = generate_image(G, z)
 
     if resize is not None:

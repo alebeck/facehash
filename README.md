@@ -10,7 +10,7 @@ This makes faces the ideal representation for cryptographic hashes, for the sake
 
 ## Usage
 
-You need a Linux environment with Python >=3.7 and PyTorch >=1.8 with cudatoolkit 11.* installed. Then install via:
+You need a Linux environment with Python >=3.7 and PyTorch >=1.8 installed. Then install via:
 
 ```bash
 pip install git+https://github.com/alebeck/facehash

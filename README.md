@@ -1,7 +1,5 @@
 # facehash - verify data integrity with hyper-realistic human faces
 
-![](teaser_dark.png)
-
 ![](teaser_dark.png#gh-dark-mode-only)
 ![](teaser_light.png#gh-light-mode-only)
 

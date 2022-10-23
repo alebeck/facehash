@@ -7,7 +7,7 @@
 
 Cryptographic hash functions are widely used for verifying data integrity, but hexadecimal (or worse, binary) representations are hard for humans to remember. In contrast, humans have evolved to parse other human faces instantly and to [store thousands of them in memory.](https://www.science.org/content/article/average-person-can-recognize-5000-faces#:~:text=To%20qualify%20as%20%22knowing%22%20a,of%20the%20Royal%20Society%20B%20.)
 
-This makes faces the ideal representation for cryptographic hashes, for the sake of quickly checking if some data has changed, even after a long time has passed.
+This makes faces the ideal representation for cryptographic hashes, at least for quickly checking if some data has changed, even after a long time has passed.
 
 ## Usage
 
